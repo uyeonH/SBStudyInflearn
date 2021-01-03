@@ -32,5 +32,13 @@ public class ConfigurationSingletonTest {
 
     }
 
+    @Test
+    void configurationDeep(){ // @CGLIB
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        AppConfig bean = ac.getBean(AppConfig.class);
+        System.out.println("bean = " + bean);
+        //bean = hello.core.AppConfig$$EnhancerBySpringCGLIB$$ef39a68d@2c5529ab
+        // 따라서, @Configuration이 싱클톤을 보장해준다는 것을 알 수 있다.
+    }
 
 }
