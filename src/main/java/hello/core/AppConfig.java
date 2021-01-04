@@ -32,7 +32,8 @@ public class AppConfig {
 
     @Bean
     public OrderService orderService() {
-        return new OrderServiceImpl(memberRepository(), new FixDiscountPolicy());
+        //return new OrderServiceImpl(memberRepository(), new FixDiscountPolicy());
+        return null;
     }
 
     // 할인 정책을 변경할 경우 이 부분만 변경해주면 된다.

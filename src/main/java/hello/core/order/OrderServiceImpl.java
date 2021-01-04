@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OrderServiceImpl implements OrderService {
+public class OrderServ iceImpl implements OrderService {
 
     private MemberRepository memberRepository;
     private DiscountPolicy discountPolicy; // DIP를 위반하지 않도록, 인터페이스에만 의존하도록
@@ -19,7 +19,20 @@ public class OrderServiceImpl implements OrderService {
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
     @Autowired
+    public void setMemberRepository(MemberRepository memberRepository){
+        //System.out.println("memberRepository = " + memberRepository);
+        this.memberRepository = memberRepository;
+    }
+
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy){
+        //System.out.println("discountPolicy = " + discountPolicy);
+        this.discountPolicy = discountPolicy;
+    }
+
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        //System.out.println("1.  OrderServiceImpl.OrderServiceImpl ");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
